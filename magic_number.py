@@ -8,7 +8,7 @@ print("="*50, "MAGIC NUMBER GAME", "="*50)
 print(f"I'm thinking of a number between {min_number} and {max_number}.\nCan you guess my number?")
 print("="*120)
 
-user_response = input("Your guess:")
+user_response = int( input("Your guess:") )
 
 while user_response != magic_number:
     max_tries -= 1
@@ -18,7 +18,7 @@ while user_response != magic_number:
         break
 
     print(f"Wrong answer. You have {max_tries} tries left.")
-    user_response = input("Your guess:")
+    user_response = int( input("Your guess:") )
 
 if user_response == magic_number:
     print(f"You win! My number was: {magic_number}")
