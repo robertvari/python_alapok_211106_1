@@ -10,3 +10,8 @@ True False
 # strings
 "Robert Vari", 'Kiss Csaba'
 "It's my job."
+
+# lists
+['vá', 'i ', 'óbe', 't', 1, 2, 3, 4]
+[1, 2, 3, 4, 5]
+[3.14, 5.43, 10.23]
