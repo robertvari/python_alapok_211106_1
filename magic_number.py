@@ -1,8 +1,10 @@
+import random
+
 min_number = 1
 max_number = 10
 max_tries = 3
 
-magic_number = 6
+magic_number = random.randint(min_number, max_number)
 
 print("="*50, "MAGIC NUMBER GAME", "="*50)
 print(f"I'm thinking of a number between {min_number} and {max_number}.\nCan you guess my number?")
