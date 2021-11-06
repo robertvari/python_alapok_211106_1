@@ -13,6 +13,10 @@ user_response = input("Your guess:")
 while user_response != magic_number:
     max_tries -= 1
 
+    if max_tries == 0:
+        print("You have no more tries :(((")
+        break
+
     print(f"Wrong answer. You have {max_tries} tries left.")
     user_response = input("Your guess:")
 
