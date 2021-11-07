@@ -1,5 +1,6 @@
 import os
 from openpyxl import Workbook
+from openpyxl.styles import Font
 from PIL import Image, ExifTags
 
 # open folder and get all files and folders
@@ -27,12 +28,31 @@ for i in file_list:
 workbook = Workbook()
 sheet = workbook.active
 
+title_font = Font(size="20", bold=True)
+
 sheet["A1"] = "File Path"
+sheet["A1"].font = title_font
+sheet.column_dimensions['A'].width = 70
+
+
 sheet["B1"] = "Date"
+sheet["B1"].font = title_font
+sheet.column_dimensions['B'].width = 40
+
 sheet["C1"] = "Size"
+sheet["C1"].font = title_font
+sheet.column_dimensions['C'].width = 40
+
 sheet["D1"] = "Camera"
+sheet["D1"].font = title_font
+sheet.column_dimensions['D'].width = 30
+
 sheet["E1"] = "Focal Length"
+sheet["E1"].font = title_font
+sheet.column_dimensions['E'].width = 30
+
 sheet["F1"] = "ISO"
+sheet["F1"].font = title_font
 
 # open photos and get exif data
 for index, photo_file in enumerate(clean_file_list):
@@ -52,19 +72,20 @@ for index, photo_file in enumerate(clean_file_list):
     if not exif_data:
         continue
 
+    # get data from exif tags
     for key, value in exif_data.items():
         tag_name = ExifTags.TAGS.get(key)
 
         if tag_name == "ISOSpeedRatings":
             sheet[f"F{row}"] = value
 
-        if tag_name == "DateTime":
+        elif tag_name == "DateTime":
             sheet[f"B{row}"] = value
 
-        if tag_name == "Model":
+        elif tag_name == "Model":
             sheet[f"D{row}"] = value
 
-        if tag_name == "FocalLength":
+        elif tag_name == "FocalLength":
             sheet[f"E{row}"] = str(value)
 
 
