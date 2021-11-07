@@ -1,4 +1,4 @@
-import os, json
+import os, json, time
 
 phonebook = {}
 data_file = "phonebook.json"
@@ -16,10 +16,11 @@ phone = input("Phone?")
 email = input("Email?")
 
 # add to phonebook dictionary
-phonebook[phone] = {
+phonebook[time.time()] = {
     "name": name,
     "address": address,
-    "email": email
+    "email": email,
+    "phone": phone
 }
 
 # save data_file
