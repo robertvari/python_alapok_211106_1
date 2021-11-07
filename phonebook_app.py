@@ -12,12 +12,15 @@ if os.path.exists(data_file):
 # get data from user
 name = input("Your name?")
 address = input("Your address?")
-email = input("Your email?")
+phone = input("Phone?")
+email = input("Email?")
 
 # add to phonebook dictionary
-phonebook["name"] = name
-phonebook["address"] = address
-phonebook["email"] = email
+phonebook[phone] = {
+    "name": name,
+    "address": address,
+    "email": email
+}
 
 # save data_file
 with open(data_file, "w") as f:
