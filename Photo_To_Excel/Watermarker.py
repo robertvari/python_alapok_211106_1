@@ -5,6 +5,9 @@ import os
 photo_folder = r"C:\Work\_PythonSuli\pycore-211106\photos"
 file_list = os.listdir(photo_folder)
 
+destination_folder = os.path.join(photo_folder, "_watermarked")
+if not os.path.exists(destination_folder):
+    os.makedirs(destination_folder)
 
 # filter file_list to get only .jpg and .jpeg formats
 clean_file_list = []
@@ -18,4 +21,15 @@ for i in file_list:
 
     clean_file_list.append(os.path.join(photo_folder, i))
 
-print(clean_file_list)
+for photo_file in clean_file_list[:1]:
+    img = Image.open(photo_file)
+
+    # resize image
+    img.thumbnail((500, 500))
+
+    # create watermark on image
+
+
+    # save image to destionation
+    dest_file_name = os.path.join(destination_folder, os.path.basename(photo_file))
+    img.save(dest_file_name)
