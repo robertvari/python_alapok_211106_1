@@ -15,7 +15,9 @@ for i in file_list:
     if not ext.lower() in extensions:
         continue
 
-    clean_file_list.append(i)
+    clean_file_list.append(os.path.join(photo_folder, i))
 
-print(file_list)
+# list comprehension
+# clean_file_list = [i for i in file_list if ".jpg" in i.lower()]
+
 print(clean_file_list)
