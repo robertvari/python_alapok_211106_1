@@ -21,14 +21,18 @@ for i in file_list:
 
     clean_file_list.append(os.path.join(photo_folder, i))
 
-for photo_file in clean_file_list[:1]:
+for photo_file in clean_file_list:
     img = Image.open(photo_file)
 
     # resize image
     img.thumbnail((500, 500))
 
     # create watermark on image
+    draw = ImageDraw.Draw(img)
 
+    font = ImageFont.truetype("arial.ttf", 90)
+
+    draw.text((0, 120), "Hello World", fill=(255, 0, 0), font=font)
 
     # save image to destionation
     dest_file_name = os.path.join(destination_folder, os.path.basename(photo_file))
